@@ -45,7 +45,7 @@ In our previous `OpenStack Icehouse installation guide <https://github.com/Chaim
 Now we will add the Heat orchestration service ;)
 
 
-.. image:: https://raw.githubusercontent.com/ChaimaGhribi/OpenStack-Icehouse-Installation/master/images/controller+heat.jpg
+.. image:: https://raw.githubusercontent.com/MarouenMechtri/OpenStack-Heat-Installation/master/images/controller+heat.jpg
 
 
 * Change to super user mode::
