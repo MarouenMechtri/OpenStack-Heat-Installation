@@ -4,7 +4,7 @@ OpenStack Heat Installation Guide
 
 
 :Version: 1.0
-:Source:
+:Source: https://github.com/MarouenMechtri/OpenStack-Heat-Installation
 :Keywords: Heat, OpenStack, Icehouse, Orchestration, Installation, Ubuntu
 
 ===============================
