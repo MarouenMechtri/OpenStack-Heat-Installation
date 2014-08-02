@@ -2,9 +2,13 @@
 OpenStack Heat Installation Guide
 ####
 
+Welcome to OpenStack Heat installation manual !
+
+This document is based on `the OpenStack Official Documentation <http://docs.openstack.org/icehouse/install-guide/install/apt/content/index.html>`_ for Icehouse. 
 
 :Version: 1.0
-:Source: https://github.com/MarouenMechtri/OpenStack-Heat-Installation
+:Authors: Marouen Mechtri and Chaima Ghribi
+:License: Apache License Version 2.0
 :Keywords: Heat, OpenStack, Icehouse, Orchestration, Installation, Ubuntu
 
 ===============================
