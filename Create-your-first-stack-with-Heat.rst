@@ -256,7 +256,7 @@ Here is a snapshot of the Horizon dashboard interface after stack launching, you
 
 .. image:: https://raw.githubusercontent.com/MarouenMechtri/OpenStack-Heat-Installation/master/images/heat-GUI.png
 
-* If you want to update a parameter of your stack (secgroup_id, public_net ...), run a command like this::
+* If you want to update a parameter of your stack (secgroup_id, public_net ...), run this command::
 
     heat stack-update First_Stack -f first-stack.yaml -P PARAMETER_NAME=PARAMETER_NEW_VALUE
  
@@ -280,7 +280,7 @@ Please contact us for any question or suggestion :)
 5. License
 ============
 
-Institut Mines Télécom - Télécom SudParis  
+Institut Mines TÃ©lÃ©com - TÃ©lÃ©com SudParis  
 
 Copyright (C) 2014  Authors
 
