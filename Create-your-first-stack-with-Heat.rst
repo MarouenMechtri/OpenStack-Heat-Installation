@@ -46,27 +46,27 @@ Using the above information, let's create a simple Hot to deploy one server ;)
 	description: Hot Template to deploy a single server
       
 	parameters:
-		ImageID:
-			type: string
-			description: Image ID
-		NetID:
-			type: string
-			description: External Network ID 
+	  ImageID:
+	    type: string
+	    description: Image ID
+	  NetID:
+	    type: string
+	    description: External Network ID 
           
 	resources:
-		server_0
-			type: OS::Nova::Server
-			properties:
-				name: "server0"
-				image: { get_param: ImageID }
-				flavor: "m1.small"
-				networks:
-				- network: { get_param: NetID }
+	  server_0
+	    type: OS::Nova::Server
+	    properties:
+	      name: "server0"
+	      image: { get_param: ImageID }
+	      flavor: "m1.small"
+	      networks:
+	      - network: { get_param: NetID }
       
 	outputs:
-		server0_ip:
-			description: IP of the server 
-			value: { get_attr: [ server_0, first_address ] }
+	  server0_ip:
+	    description: IP of the server 
+	    value: { get_attr: [ server_0, first_address ] }
 
 Now, let's create a more complex template!
 
