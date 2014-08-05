@@ -154,9 +154,8 @@ That's it ;)
 
 Installation is too easy and quick but results are really great!
 
-A detailed heat usage guide will be provided soon ;)
-
-You could create and test your own stacks :)
+If you want to create your first template with Heat, follow the instructions in our stack creation guide available here 
+`Create-First-Stack-with-Heat <https://github.com/MarouenMechtri/OpenStack-Heat-Installation/blob/master/Create-your-first-stack-with-Heat.rst>`_
 
 3. License
 =========
