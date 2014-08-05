@@ -229,7 +229,7 @@ Now the template is ready! let's create the stack ;)
     export OS_PASSWORD=admin_pass
     export OS_AUTH_URL="http://192.168.100.11:5000/v2.0/"
     
-* Create a stack from the template::
+* Create a stack from the template (file available `here <https://github.com/MarouenMechtri/OpenStack-Heat-Installation/blob/master/heat%20templates/first-stack.yml>`_)::
 
     Source creds
 
@@ -261,13 +261,13 @@ Here is a snapshot of the Horizon dashboard interface after stack launching, you
     heat stack-update First_Stack -f first-stack.yaml -P PARAMETER_NAME=PARAMETER_NEW_VALUE
  
 
-* If you want to update your stack from a modified template file, run a command like this::
+* If you want to update your stack from a modified template file (available `here <https://github.com/MarouenMechtri/OpenStack-Heat-Installation/blob/master/heat%20templates/modified-first-stack.yml>`_), run a command like this::
 
 	NET_ID=$(nova net-list | awk '/ ext-net / { print $2 }')
 
 	SEC_ID=$(nova secgroup-list | awk '/ default / { print $2 }')
 
-	heat stack-update First_Stack -f first-stack-modify.yml \
+	heat stack-update First_Stack -f modified-first-stack.yml \
 	-P image_id=cirros-0.3.2-x86_64 \
 	-P public_net=$NET_ID \
 	-P secgroup_id=$SEC_ID
