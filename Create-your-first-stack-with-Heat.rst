@@ -231,7 +231,7 @@ Now the template is ready! let's create the stack ;)
     
 * Create a stack from the template (file available `here <https://github.com/MarouenMechtri/OpenStack-Heat-Installation/blob/master/heat%20templates/first-stack.yml>`_)::
 
-    Source creds
+    source creds
 
     NET_ID=$(nova net-list | awk '/ ext-net / { print $2 }')
 
