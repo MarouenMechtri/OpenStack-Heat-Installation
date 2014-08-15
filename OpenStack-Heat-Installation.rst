@@ -98,14 +98,48 @@ Now we will add the Heat orchestration service ;)
 * Create the heat_stack_user role::
 
     keystone role-create --name heat_stack_user
+    
+* Install OpenStack client::
 
+    apt-get install -y python-openstackclient
+
+* Create heat domain::
+
+    source creds
+    
+    OS_TOKEN=$(keystone token-get |awk "/ id / { print \$4}")
+    
+    KEYSTONE_ENDPOINT_V3=http://controller:5000/v3
+    
+    HEAT_DOMAIN_ID=$(openstack --os-token $OS_TOKEN --os-url=$KEYSTONE_ENDPOINT_V3 \
+    --os-identity-api-version=3 domain create heat \
+    --description "Owns users and projects created by heat")
+    
+* Create the heat_domain_admin user::
+
+    openstack --os-token $OS_TOKEN --os-url=$KEYSTONE_ENDPOINT_V3 \
+    --os-identity-api-version=3 user create --password service_pass \
+    --domain $HEAT_DOMAIN_ID heat_domain_admin \
+    --description "Manages users and projects created by heat"
+
+    openstack --os-token $OS_TOKEN --os-url=$KEYSTONE_ENDPOINT_V3 \
+    --os-identity-api-version=3 role add --user heat_domain_admin \
+    --domain $HEAT_DOMAIN_ID admin
+    
+* Create heat_stack_owner role and give role to users (admin and demo) who create Heat stacks::
+
+    keystone role-create --name heat_stack_owner
+
+    keystone user-role-add --user=demo --tenant=demo --role=heat_stack_owner
+    keystone user-role-add --user=admin --tenant=demo --role=heat_stack_owner
+    keystone user-role-add --user=admin --tenant=admin --role=heat_stack_owner
 
 * Edit the /etc/heat/heat.conf file::
 
     vi /etc/heat/heat.conf
    
     [database]
-    replace connection=sqlite:////var/lib/heat/$sqlite_db ith:
+    replace connection=sqlite:////var/lib/heat/$sqlite_db with:
     connection = mysql://heat:HEAT_DBPASS@controller/heat
   
     [DEFAULT]  
@@ -114,7 +148,12 @@ Now we will add the Heat orchestration service ;)
     rabbit_host = controller
     heat_metadata_server_url = http://10.0.0.11:8000
     heat_waitcondition_server_url = http://10.0.0.11:8000/v1/waitcondition
-    
+    # replace $HEAT_DOMAIN_ID variable by the id of heat domain
+    stack_user_domain=$HEAT_DOMAIN_ID
+    stack_domain_admin=heat_domain_admin
+    stack_domain_admin_password=service_pass
+    deferred_auth_method=trusts
+
     [keystone_authtoken]
     auth_host = controller
     auth_port = 35357
