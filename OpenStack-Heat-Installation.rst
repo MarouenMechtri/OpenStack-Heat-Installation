@@ -72,6 +72,8 @@ Now we will add the Heat orchestration service ;)
 
 
 * Configure service user and role::
+    
+    source creds
 
     keystone user-create --name=heat --pass=service_pass --email=heat@domain.com
     keystone user-role-add --user=heat --tenant=service --role=admin
