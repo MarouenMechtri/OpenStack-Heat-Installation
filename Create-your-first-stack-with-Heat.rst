@@ -54,7 +54,7 @@ Using the above information, let's create a simple Hot to deploy one server ;)
 	    description: External Network ID 
           
 	resources:
-	  server_0
+	  server_0:
 	    type: OS::Nova::Server
 	    properties:
 	      name: "server0"
