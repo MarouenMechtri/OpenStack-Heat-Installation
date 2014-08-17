@@ -115,7 +115,7 @@ Now we will add the Heat orchestration service ;)
     
     HEAT_DOMAIN_ID=$(openstack --os-token $OS_TOKEN --os-url=$KEYSTONE_ENDPOINT_V3 \
     --os-identity-api-version=3 domain create heat \
-    --description "Owns users and projects created by heat" | grep ' id ' | get_field 2)
+    --description "Owns users and projects created by heat" | grep ' id ' | awk "{ print \$4}")
     
 * Create the heat_domain_admin user::
 
