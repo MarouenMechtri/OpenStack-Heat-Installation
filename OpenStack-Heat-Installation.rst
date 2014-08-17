@@ -169,7 +169,7 @@ Now we will add the Heat orchestration service ;)
     auth_uri = http://controller:5000/v2.0
 
 
-* Heat will use the default user 'ec2-user' to configure user instance. If you want to change the user instance (to access your VM via ssh) edit the /etc/heat/heat.conf file::
+* user_instance is required when you want to access your VM via ssh. Heat will use the default user 'ec2-user' to configure user instance. If you want to change the user instance edit the /etc/heat/heat.conf file::
     
     vi /etc/heat/heat.conf
     
