@@ -163,7 +163,7 @@ We will show you how to install the Docker plugin, how to write your template an
 4.3. Deploy your stack
 -----------------------
 
-
+* Docker template::  
 
     heat_template_version: 2013-05-23
 
