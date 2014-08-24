@@ -70,6 +70,9 @@ Using the above information, let's create a simple Hot to deploy one server ;)
 
 Now, let's create a more complex template!
 
+2. Create your template 
+========================
+
 Here, we consider an infrastructure composed of two interconnected VMs which have
 floating ips and are reachable from external networks (see the figure below).
 
