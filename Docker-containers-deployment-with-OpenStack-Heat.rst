@@ -95,3 +95,117 @@ But now you can enjoy docker on OpenStack with Flat-networking ;)
   
 
 .. image:: https://raw.githubusercontent.com/MarouenMechtri/OpenStack-Heat-Installation/master/images/docker-plugin.jpg
+
+4. Deploy Docker containers with OpenStack Heat
+===============================================
+
+Now that we have discussed about Docker and Heat, let's move to practice !
+We will show you how to install the Docker plugin, how to write your template and how to deploy it with Heat ;)
+
+
+4.1. Install the Docker Plugin 
+--------------------------------
+
+* To get the Docker plugin, download the Heat folder available on GitHub::
+
+    download heat (the ZIP folder) from here
+    https://github.com/openstack/heat/tree/stable/icehouse
+
+* Unzip it::
+
+    unzip heat-stable-icehouse.zip
+
+
+* Remove the tests folder to avoid conflicts::
+
+    cd heat-stable-icehouse/contrib/
+    rm -rf docker/docker/tests
+
+* create a new directory under /usr/lib/heat/:: 
+
+    mkdir /usr/lib/heat 
+    mkdir /usr/lib/heat/docker-plugin
+
+* Copy the docker plugin under your new directory::
+
+    cp -r docker/* /usr/lib/heat/docker-plugin
+  
+* Now, install the docker plugin::
+
+    cd /usr/lib/heat/docker-plugin
+    apt-get install python-pip
+    pip install -r requirements.txt  
+    
+    
+* Edit /etc/heat/heat.conf file::
+
+    vi /etc/heat/heat.conf
+    (add)
+    plugin_dirs=/usr/lib/heat/docker-plugin/docker
+ 
+ 
+* Restart services::
+
+    service heat-api restart
+    service heat-api-cfn restart
+    service heat-engine restart    
+    
+
+* Check that the DockerInc\::Docker\::Container resource was successfully added and appears in your resource list::
+
+    heat resource-type-list | grep Docker 
+    
+
+4.2. Create your Heat template
+-------------------------------
+
+
+4.3. Deploy your stack
+-----------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+It could take some minutes, so just wait... After that, you can play with your Docker containers ;)
+
+Please get back to us if you have any question. 
+
+
+5. License
+=========
+Institut Mines Télécom - Télécom SudParis  
+
+Copyright (C) 2014  Authors
+
+Original Authors -  Marouen Mechtri and  Chaima Ghribi 
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except 
+
+in compliance with the License. You may obtain a copy of the License at::
+
+    http://www.apache.org/licenses/LICENSE-2.0
+    
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+
+6. Contacts
+===========
+
+Marouen Mechtri : marouen.mechtri@it-sudparis.eu
+
+Chaima Ghribi: chaima.ghribi@it-sudparis.eu
