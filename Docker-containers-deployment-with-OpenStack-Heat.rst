@@ -27,9 +27,9 @@ Copyright (C) `Chaima Ghribi <https://www.linkedin.com/profile/view?id=53659267&
 1. Overview
 ============
 
-We’ve all heard about Docker and the immense amount a buzz around it from last year !
+Weâ€™ve all heard about Docker and the immense amount a buzz around it from last year !
 
-What’s Docker ? why is it useful ? how can we use it and integrate it into Openstack ? 
+Whatâ€™s Docker ? why is it useful ? how can we use it and integrate it into Openstack ? 
 and how to deploy our applications with it ? 
 
 All these questions came to our minds when we started discovering Docker.
@@ -50,12 +50,12 @@ It commoditizes the well known LXC (Linux Container) solution that provides oper
 level virtualization and allows to run multiple containers on the same server. 
 
 To make a simple analogy, a Docker is like an hypervisor.  But unlike traditional Vms,
-docker containers are lightweight as they  don’t run OSes but share the host’s operating system (see the figure below).
+docker containers are lightweight as they  donâ€™t run OSes but share the hostâ€™s operating system (see the figure below).
 
 A docker container is also portable, it hosts the application and its dependencies and it is able
 to be deployed or relocated on any Linux server.
 
-.. image:: file:///C:\Users\ghribi_c\Desktop\icehouse\two-node\docker-virt1.jpg
+.. image:: https://raw.githubusercontent.com/MarouenMechtri/OpenStack-Heat-Installation/master/images/docker-vs-hypervisor.jpg
 
 The Docker element that manages containers and deploys applications on them is called Docker Engine.
 
@@ -94,4 +94,4 @@ users using isolated neutron networks to deploy and test Docker!
 But now you can enjoy docker on OpenStack with Flat-networking ;)
   
 
-.. image:: file:///C:\Users\ghribi_c\Desktop\icehouse\two-node\docker+heat1.jpg
+.. image:: https://raw.githubusercontent.com/MarouenMechtri/OpenStack-Heat-Installation/master/images/docker-plugin.jpg
