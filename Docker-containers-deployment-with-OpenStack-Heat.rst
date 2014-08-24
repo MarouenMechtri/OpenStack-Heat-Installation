@@ -79,7 +79,7 @@ You need to identify the required resources, edit your template and deploy it on
 (For detailed information on Heat and template creation, you can see our Heat usage guide). 
 
 
-If you want to test Docker with Heat, we recommand you to deploy OpenStack using a flat networking model (see our `guide <https://github.com/ChaimaGhribi/Icehouse-Installation-Flat-Networking>_`).
+If you want to test Docker with Heat, we recommand you to deploy OpenStack using a flat networking model (see our `guide <https://github.com/ChaimaGhribi/Icehouse-Installation-Flat-Networking>`_).
 One issue we encountered when we considered a multi-node architecture with isolated neutron networks is that 
 instances were not able to signal to Heat. So, stack creation fails because it dependens on 
 connectivity from VMs to the Heat engine. 
