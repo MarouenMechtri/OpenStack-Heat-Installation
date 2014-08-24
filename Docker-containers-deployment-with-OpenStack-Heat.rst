@@ -246,9 +246,9 @@ We will show you how to install the Docker plugin, how to write your template an
 	    - 3306
 	  docker_endpoint:
 	    str_replace:
-	    template: http://host:2375
-	    params:
-	      host: {get_attr: [docker_server, networks, private, 0]}
+	      template: http://host:2375
+	      params:
+	        host: {get_attr: [docker_server, networks, private, 0]}
 
       apache:
 	type: DockerInc::Docker::Container
