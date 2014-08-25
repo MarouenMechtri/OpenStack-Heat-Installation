@@ -273,7 +273,8 @@ We will show you how to install the Docker plugin, how to write your template an
 4.3. Deploy your stack
 -----------------------
 
-Now the template is ready! let's create the stack ;)
+4.3.1. Pre-deployment
+^^^^^^^^^^^^^^^^^^^^^^
 
 * Create a simple credential file::
 
@@ -284,6 +285,61 @@ Now the template is ready! let's create the stack ;)
     export OS_PASSWORD=admin_pass
     export OS_AUTH_URL="http://controller:5000/v2.0/"
     
+* To create a fedora based image, we followed the steps bellow `(source via this link) <https://github.com/openstack/heat-templates/tree/master/hot/software-config/elements>`_::    
+    
+
+    git clone https://git.openstack.org/openstack/diskimage-builder.git
+    git clone https://git.openstack.org/openstack/tripleo-image-elements.git
+    git clone https://git.openstack.org/openstack/heat-templates.git
+    export ELEMENTS_PATH=tripleo-image-elements/elements:heat-templates/hot/software-config/elements
+    diskimage-builder/bin/disk-image-create vm \
+    fedora selinux-permissive \
+    heat-config \
+    os-collect-config \
+    os-refresh-config \
+    os-apply-config \
+    heat-config-cfn-init \
+    heat-config-puppet \
+    heat-config-salt \
+    heat-config-script \
+    -o fedora-software-config.qcow2
+    glance image-create --disk-format qcow2 --container-format bare --name fedora-software-config < \
+    fedora-software-config.qcow2
+    
+* If you didn't create a key, use these commands::
+
+   ssh-keygen
+   source creds
+   nova keypair-add --pub-key ~/.ssh/id_rsa.pub key1    
+    
+* Add rules to the default security group to access your instance remotely::
+
+   # Permit ICMP (ping):
+   nova secgroup-add-rule default icmp -1 -1 0.0.0.0/0
+
+   # Permit secure shell (SSH) access:
+   nova secgroup-add-rule default tcp 22 22 0.0.0.0/0
+
+   # Permit 2375 port access:
+   nova secgroup-add-rule default tcp 2375 2375 0.0.0.0/0  
+   
+
+* If you need to create a new private network, use these commands::
+
+   source creds
+
+   #Create a private network:
+   nova network-create private --bridge br100 --multi-host T  --dns1 8.8.8.8  --gateway 172.16.0.1 --fixed-range-v4 172.16.0.0/24
+   
+*  Create a floating IP pool to connect instances to Internet::
+
+    source creds
+    nova-manage floating create --pool=nova --ip_range=192.168.100.100/28
+   
+
+4.3.2. Create your stack
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 * Create a stack from the template (file available `here <https://github.com/MarouenMechtri/OpenStack-Heat-Installation/blob/master/heat%20templates/docker-stack.yml>`_)::
 
     source creds
@@ -291,22 +347,19 @@ Now the template is ready! let's create the stack ;)
     heat stack-create -f docker-stack.yml docker-stack
 
 
-* Verify that the stack was created successfully::
+* Verify that the stack was created::
 
     heat stack-list
 
 
-Here is a snapshot of the Horizon dashboard interface after stack launching, you can see all the created resources ;)
+It could take some minutes, so just wait ... 
 
+Here is a snapshot of the Horizon dashboard interface after stack launching: 
 
 .. image:: https://raw.githubusercontent.com/MarouenMechtri/OpenStack-Heat-Installation/master/images/docker-stack.png
   
   
-It could take some minutes, so just wait... After that, you can play with your Docker containers ;)
-
-
-
-check that your containers are created
+* To check that your containers are created::
   
   ssh ec2-user@192.168.100.97
   
@@ -315,6 +368,7 @@ check that your containers are created
   
 .. image:: https://raw.githubusercontent.com/MarouenMechtri/OpenStack-Heat-Installation/master/images/docker-containers.png
 
+That's it! you can now play with your Docker containers ;)
 Please get back to us if you have any question. 
 
 
