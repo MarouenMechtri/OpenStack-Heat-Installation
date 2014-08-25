@@ -159,6 +159,17 @@ We will show you how to install the Docker plugin, how to write your template an
 4.2. Create your Heat template
 -------------------------------
 
+Before editing the template, let's discuss a bit about the content and the resources we will define ;)
+
+In this example, we want to dockerize and deploy a lamp application. So, we will create a docker 
+container running apache with php and another one running mysql database. 
+
+We define an OS::Heat::SoftwareConfig resource that describes the configuration and an OS::Heat::SoftwareDeployment resource to
+deploy configs on OS::Nova::Server (the Docker server). We associate 
+a floating IP to the Docker server to be able to connect to Internet ( using OS::Nova::FloatingIP and OS::Nova::FloatingIPAssociation resources). 
+Then, we create two docker containers of type DockerInc::Docker::Container on the Docker host. 
+
+
 
 * Create template in the docker-stack.yml file with the following content::
 
