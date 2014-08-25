@@ -160,7 +160,9 @@ We will show you how to install the Docker plugin, how to write your template an
 -------------------------------
 
 
-* Docker template::  
+* Create template in the docker-stack.yml file with the following content::
+
+    vi docker-stack.yml
 
     heat_template_version: 2013-05-23
 
