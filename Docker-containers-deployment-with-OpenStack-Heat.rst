@@ -76,7 +76,7 @@ It to orchestrate containers with OpenStack Heat !
 You have just to install the docker plugin on Heat and you will be able to create
 containers and deploy your applications on the top of them.
 You need to identify the required resources, edit your template and deploy it on Heat. Your stack will be created!
-(For detailed information on Heat and template creation, you can see our Heat usage guide). 
+(For detailed information on Heat and template creation, you can see our `Heat usage guide <https://github.com/MarouenMechtri/OpenStack-Heat-Installation/blob/master/Create-your-first-stack-with-Heat.rst>`_). 
 
 
 If you want to test Docker with Heat, we recommand you to deploy OpenStack using a flat networking model (see our `guide <https://github.com/ChaimaGhribi/Icehouse-Installation-Flat-Networking>`_).
