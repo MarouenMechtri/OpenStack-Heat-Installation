@@ -289,6 +289,17 @@ Now the template is ready! let's create the stack ;)
     source creds
 
     heat stack-create -f docker-stack.yml docker-stack
+
+
+* Verify that the stack was created successfully::
+
+    heat stack-list
+
+
+Here is a snapshot of the Horizon dashboard interface after stack launching, you can see all the created resources ;)
+
+
+.. image:: https://raw.githubusercontent.com/MarouenMechtri/OpenStack-Heat-Installation/master/images/docker-stack.png
   
   
 It could take some minutes, so just wait... After that, you can play with your Docker containers ;)
