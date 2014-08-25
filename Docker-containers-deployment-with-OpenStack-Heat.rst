@@ -160,9 +160,6 @@ We will show you how to install the Docker plugin, how to write your template an
 -------------------------------
 
 
-4.3. Deploy your stack
------------------------
-
 * Docker template::  
 
     heat_template_version: 2013-05-23
@@ -273,6 +270,27 @@ We will show you how to install the Docker plugin, how to write your template an
 	      host: {get_attr: [docker_server, networks, private, 0]}
 
 
+4.3. Deploy your stack
+-----------------------
+
+Now the template is ready! let's create the stack ;)
+
+* Create a simple credential file::
+
+    vi creds
+    #Paste the following:
+    export OS_TENANT_NAME=admin
+    export OS_USERNAME=admin
+    export OS_PASSWORD=admin_pass
+    export OS_AUTH_URL="http://controller:5000/v2.0/"
+    
+* Create a stack from the template (file available `here <https://github.com/MarouenMechtri/OpenStack-Heat-Installation/blob/master/heat%20templates/docker-stack.yml>`_)::
+
+    source creds
+
+    heat stack-create -f docker-stack.yml docker-stack
+  
+  
 It could take some minutes, so just wait... After that, you can play with your Docker containers ;)
 
 Please get back to us if you have any question. 
