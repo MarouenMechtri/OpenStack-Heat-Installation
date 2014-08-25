@@ -169,7 +169,11 @@ deploy configs on OS::Nova::Server (the Docker server). We associate
 a floating IP to the Docker server to be able to connect to Internet ( using OS::Nova::FloatingIP and OS::Nova::FloatingIPAssociation resources). 
 Then, we create two docker containers of type DockerInc::Docker::Container on the Docker host. 
 
+Note: here we provide a simple template, many other interseting parameters ( port_bindings, name, links...) can enhance 
+the template and enable more sophisticated use of Docker. These parameters are not supported by the current Docker plugin.  
+We will provide more complex templates with the next plugin version. 
 
+Now let's edit our template! 
 
 * Create template in the docker-stack.yml file with the following content::
 
