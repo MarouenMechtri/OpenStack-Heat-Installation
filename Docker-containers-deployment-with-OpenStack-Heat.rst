@@ -304,6 +304,17 @@ Here is a snapshot of the Horizon dashboard interface after stack launching, you
   
 It could take some minutes, so just wait... After that, you can play with your Docker containers ;)
 
+
+
+check that your containers are created
+  
+  ssh ec2-user@192.168.100.97
+  
+  sudo docker -H :2375 ps 
+  
+  
+.. image:: https://raw.githubusercontent.com/MarouenMechtri/OpenStack-Heat-Installation/master/images/docker-containers.png
+
 Please get back to us if you have any question. 
 
 
