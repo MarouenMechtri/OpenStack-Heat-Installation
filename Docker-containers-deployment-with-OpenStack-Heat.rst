@@ -322,10 +322,9 @@ Then, we create two docker containers of type DockerInc::Docker::Container on th
 * If you didn't create a key, use these commands::
 
    ssh-keygen
-   source creds
    nova keypair-add --pub-key ~/.ssh/id_rsa.pub key1    
     
-* Add rules to the default security group to access your instance remotely::
+* Add rules to the default security group to enable the access to the docker server::
 
    # Permit ICMP (ping):
    nova secgroup-add-rule default icmp -1 -1 0.0.0.0/0
@@ -333,7 +332,7 @@ Then, we create two docker containers of type DockerInc::Docker::Container on th
    # Permit secure shell (SSH) access:
    nova secgroup-add-rule default tcp 22 22 0.0.0.0/0
 
-   # Permit 2375 port access:
+   # Permit 2375 port access (Docker endpoint):
    nova secgroup-add-rule default tcp 2375 2375 0.0.0.0/0  
    
 
@@ -342,12 +341,12 @@ Then, we create two docker containers of type DockerInc::Docker::Container on th
    source creds
 
    #Create a private network:
-   nova network-create private --bridge br100 --multi-host T  --dns1 8.8.8.8  --gateway 172.16.0.1 --fixed-range-v4 172.16.0.0/24
+   nova network-create private --bridge br100 --multi-host T  --dns1 8.8.8.8  \
+   --gateway 172.16.0.1 --fixed-range-v4 172.16.0.0/24
    
-*  Create a floating IP pool to connect instances to Internet::
+* Create a floating IP pool to connect instances to Internet::
 
-    source creds
-    nova-manage floating create --pool=nova --ip_range=192.168.100.100/28
+   nova-manage floating create --pool=nova --ip_range=192.168.100.100/28
    
 
 4.3.2. Create your stack
@@ -374,9 +373,9 @@ Here is a snapshot of the Horizon dashboard interface after stack launching:
   
 * To check that your containers are created::
   
-  ssh ec2-user@192.168.100.97
+    ssh ec2-user@192.168.100.97
   
-  sudo docker -H :2375 ps 
+    sudo docker -H :2375 ps 
   
   
 .. image:: https://raw.githubusercontent.com/MarouenMechtri/OpenStack-Heat-Installation/master/images/docker-containers.png
