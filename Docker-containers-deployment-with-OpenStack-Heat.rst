@@ -323,7 +323,7 @@ Now let's edit our template!
     glance image-create --disk-format qcow2 --container-format bare --name fedora-software-config < \
     fedora-software-config.qcow2
     
-* If you didn't create a key, use these commands::
+* If you didn't created a key, use these commands::
 
    ssh-keygen
    nova keypair-add --pub-key ~/.ssh/id_rsa.pub key1    
