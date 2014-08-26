@@ -23,8 +23,8 @@ It's quick and easy ;)
 
 .. contents::
 
-1. Overview
-============
+Overview
+========
 
 The most important step in this guide is the creation of the Heat Orchestration Template or HOT !
 
@@ -215,8 +215,8 @@ After identifying the needed resources, let's edit the template ;)
 		description: Floating IP address of server2
 		value: { get_attr: [ server2_floating_ip, floating_ip_address ] }
 
-3. Create your stack
-=====================
+Create your stack
+=================
 
 Now the template is ready! let's create the stack ;)
 
@@ -243,8 +243,8 @@ Now the template is ready! let's create the stack ;)
     -P secgroup_id=$SEC_ID First_Stack
 
     
-4. Verify Stack creation
-=========================
+Verify Stack creation
+=====================
 
 * Verify that the stack was created successfully::
 
@@ -277,8 +277,8 @@ Now you are finally done! You can enjoy your first stack ;)
 Please contact us for any question or suggestion :)
 
 
-5. License
-============
+License
+=======
 
 Institut Mines Télécom - Télécom SudParis  
 
@@ -300,8 +300,8 @@ in compliance with the License. You may obtain a copy of the License at::
     limitations under the License.
 
 
-6. Contacts
-===========
+Contacts
+========
 
 Marouen Mechtri : marouen.mechtri@it-sudparis.eu
 
