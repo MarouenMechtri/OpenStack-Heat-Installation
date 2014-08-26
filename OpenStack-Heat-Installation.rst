@@ -23,8 +23,8 @@ Copyright (C) Chaima Ghribi
 
 .. contents::
 
-1. Heat Overview
-================
+Heat Overview
+=============
 
 In this guide, we will go over the installation of an awesome OpenStack service !  
 
@@ -41,8 +41,8 @@ If you want to extend or redesign your infrastructure, modify the template and u
 
 Let's Install it ;)
 
-2. Heat Install
-===============
+Heat Install
+============
 
 In our previous `OpenStack Icehouse installation guide <https://github.com/ChaimaGhribi/OpenStack-Icehouse-Installation/blob/master/OpenStack-Icehouse-Installation.rst>`_, we 've installed the basic services on the controller node.
 
@@ -204,8 +204,8 @@ Installation is too easy and quick but results are really great!
 If you want to create your first template with Heat, follow the instructions in our stack creation guide available here 
 `Create-First-Stack-with-Heat <https://github.com/MarouenMechtri/OpenStack-Heat-Installation/blob/master/Create-your-first-stack-with-Heat.rst>`_
 
-3. License
-=========
+License
+=======
 Institut Mines Télécom - Télécom SudParis  
 
 Copyright (C) 2014  Authors
@@ -226,8 +226,8 @@ in compliance with the License. You may obtain a copy of the License at::
     limitations under the License.
 
 
-4. Contacts
-===========
+Contacts
+========
 
 Marouen Mechtri : marouen.mechtri@it-sudparis.eu
 
